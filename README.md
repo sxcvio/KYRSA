@@ -6,6 +6,7 @@
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![No deps](https://img.shields.io/badge/dependencies-none-brightgreen?style=flat-square)
+![Repo](https://img.shields.io/badge/github-sxcvio%2FKYRSA-181717?style=flat-square&logo=github)
 
 ---
 
@@ -42,15 +43,20 @@
 ## Структура файлов
 
 ```
-Kyr/
-├── index.html          # Главная страница
-├── exchange.html       # Обмен
-├── rates.html          # Курсы и комиссии
-├── security.html       # Безопасность
-├── contacts.html       # Контакты и FAQ
-├── style.css           # Все стили (CSS-переменные, сетки, компоненты)
-├── theme.js            # Переключение светлой/тёмной темы
-├── rates.js            # Фиксированные курсы и комиссии
+KYRSA/
+├── index.html          # Точка входа (главная страница)
+├── html/
+│   ├── exchange.html   # Обмен
+│   ├── rates.html      # Курсы и комиссии
+│   ├── security.html   # Безопасность
+│   └── contacts.html   # Контакты и FAQ
+├── css/
+│   └── style.css       # Все стили (CSS-переменные, сетки, компоненты)
+├── js/
+│   ├── theme.js        # Переключение светлой/тёмной темы
+│   └── rates.js        # Фиксированные курсы и комиссии
+├── fonts/
+│   └── Inter/          # Шрифт Inter
 └── image/
     ├── icons/
     │   ├── logo-mark.svg
@@ -104,6 +110,13 @@ npx serve .
 - **HTML5** — семантическая разметка, мета-теги, формы
 - **CSS3** — CSS Custom Properties, Grid, Flexbox, медиазапросы, transitions
 - **Vanilla JS** — без фреймворков и сборщиков
+- **Inter** — локально подключённый шрифт (`fonts/Inter/`)
+
+---
+
+## Скриншоты
+
+> Добавьте скриншоты светлой и тёмной темы в папку `image/` и вставьте их сюда.
 
 ---
 
