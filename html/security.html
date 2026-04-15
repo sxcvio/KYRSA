@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NONOIR Exchange | Безопасность</title>
+  <link rel="icon" href="../image/logo/logo_nonoir.png" type="image/png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+
+    <header class="site-header">
+      <div class="container header-row">
+        <a class="brand" href="./index.html">
+          <img class="brand-text" src="../image/logo/text_logo_nonoir_black.png" alt="NONOIR Exchange">
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+          <a href="./index.html">Главная</a>
+          <a href="./exchange.html">Обмен</a>
+          <a href="./rates.html">Курсы</a>
+          <a class="active" href="./security.html">Безопасность</a>
+          <a href="./contacts.html">Контакты</a>
+          <button class="theme-toggle" type="button">Сменить тему</button>
+        </nav>
+        <button class="theme-toggle" type="button">Тёмная тема</button>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="page-title">
+        <div class="container">
+          <h1>Принципы защиты данных и проверки операций</h1>
+          <p>Безопасность сервиса включает контроль адресов, проверку источника средств, оценку риска клиента и прозрачную логику AML-решений до выплаты.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid-3">
+            <div class="card feature-card">
+              <h3>AML-контроль</h3>
+              <p>Каждая заявка проходит скоринг по источнику средств, истории кошелька, размеру перевода, частоте операций и признакам высокого риска.</p>
+            </div>
+            <div class="card feature-card">
+              <h3>Подтверждение заявки</h3>
+              <p>Перед исполнением сервис сверяет направление обмена, сеть, выданные реквизиты и маршрут выплаты, чтобы исключить ошибочный перевод.</p>
+            </div>
+            <div class="card feature-card">
+              <h3>Ручная модерация</h3>
+              <p>Подозрительные операции не исполняются автоматически: они переходят в ручную проверку с запросом уточняющих данных у клиента.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid-2">
+            <div class="card aml-card">
+              <h3>Детализированная AML-проверка</h3>
+              <p>Демо-модель показывает, как может выглядеть внутренняя оценка риска по нескольким критериям до того, как заявка попадёт в обмен или на выплату.</p>
+
+              <div class="form-group">
+                <label for="aml-amount">Сумма заявки, USDT</label>
+                <input type="number" id="aml-amount" min="0" value="2500" placeholder="Например, 2500">
+              </div>
+
+              <div class="form-group">
+                <label for="aml-asset">Актив</label>
+                <select id="aml-asset">
+                  <option value="USDT" selected>USDT</option>
+                  <option value="BTC">BTC</option>
+                  <option value="ETH">ETH</option>
+                  <option value="LTC">LTC</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="aml-source">Источник средств</label>
+                <select id="aml-source">
+                  <option value="verified">Подтвержденный кошелек</option>
+                  <option value="exchange">Биржевой вывод</option>
+                  <option value="mixed">Смешанная история транзакций</option>
+                  <option value="unknown">Неизвестный источник</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="aml-activity">Риск активности</label>
+                <select id="aml-activity">
+                  <option value="low">Низкий</option>
+                  <option value="medium">Средний</option>
+                  <option value="high">Высокий</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="aml-jurisdiction">Юрисдикция контрагента</label>
+                <select id="aml-jurisdiction">
+                  <option value="trusted">Низкий риск</option>
+                  <option value="watch">Повышенное наблюдение</option>
+                  <option value="restricted">Ограниченная юрисдикция</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="aml-frequency">Частота похожих транзакций</label>
+                <select id="aml-frequency">
+                  <option value="rare">Редко</option>
+                  <option value="regular">Регулярно</option>
+                  <option value="burst">Серия за короткое время</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="aml-wallet-age">Возраст кошелька</label>
+                <select id="aml-wallet-age">
+                  <option value="old">Более 90 дней</option>
+                  <option value="mid">От 30 до 90 дней</option>
+                  <option value="new">Менее 30 дней</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary" id="aml-check-btn" type="button">Запустить AML-анализ</button>
+            </div>
+
+            <div class="card aml-result-card" id="aml-result">
+              <div class="aml-result-top">
+                <span class="aml-badge aml-badge-neutral" id="aml-badge">Ожидает проверки</span>
+                <div class="aml-score-box">
+                  <span>Risk score</span>
+                  <strong id="aml-score">0 / 100</strong>
+                </div>
+              </div>
+
+              <strong id="aml-title">Статус пока не рассчитан</strong>
+              <p id="aml-text">Укажите параметры заявки и запустите проверку, чтобы увидеть итоговое AML-решение и детализацию факторов риска.</p>
+
+              <div class="aml-decision-grid">
+                <div class="mock-field">
+                  <span>Решение системы</span>
+                  <strong id="aml-decision">Нет решения</strong>
+                </div>
+                <div class="mock-field">
+                  <span>Действие оператора</span>
+                  <strong id="aml-action">Ожидается запуск проверки</strong>
+                </div>
+              </div>
+
+              <div>
+                <h3>Ключевые факторы</h3>
+                <ul class="aml-factor-list" id="aml-factor-list">
+                  <li>Факторы риска появятся после запуска анализа.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3>Результат по этапам</h3>
+                <ul class="check-list aml-check-list" id="aml-stage-list">
+                  <li>Проверка источника средств</li>
+                  <li>Анализ поведенческого профиля</li>
+                  <li>Решение по исполнению заявки</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <div class="grid-2">
+            <div class="card">
+              <h3>Что проверяется в AML</h3>
+              <ul class="check-list" style="margin-top: 12px;">
+                <li>Связь адреса с сервисами высокого риска и санкционными метками</li>
+                <li>Нетипичная частота операций и дробление крупных сумм</li>
+                <li>Возраст кошелька, цепочка происхождения и история поступлений</li>
+                <li>Соответствие актива, направления и заявленного поведения клиента</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3>Когда заявка уходит в ручную проверку</h3>
+              <ul class="check-list" style="margin-top: 12px;">
+                <li>Срабатывает несколько факторов повышенного риска одновременно</li>
+                <li>Обнаружена серия быстрых входящих переводов перед обменом</li>
+                <li>Источник средств не подтверждён или связан с новой активностью</li>
+                <li>Юрисдикция и профиль транзакции требуют дополнительной верификации</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <div>
+          <strong>NONOIR Exchange</strong>
+          <p>Надёжный обмен криптовалют на рублёвые реквизиты.</p>
+        </div>
+        <div class="footer-links">
+          <a href="./index.html">Главная</a>
+          <a href="./exchange.html">Обмен</a>
+          <a href="./rates.html">Курсы</a>
+          <a href="./contacts.html">Контакты</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../js/nav.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/security.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>

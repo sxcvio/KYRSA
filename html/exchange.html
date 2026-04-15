@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NONOIR Exchange | Обмен</title>
+  <link rel="icon" href="../image/logo/logo_nonoir.png" type="image/png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+
+    <header class="site-header">
+      <div class="container header-row">
+        <a class="brand" href="./index.html">
+          <img class="brand-text" src="../image/logo/text_logo_nonoir_black.png" alt="NONOIR Exchange">
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+          <a href="./index.html">Главная</a>
+          <a class="active" href="./exchange.html">Обмен</a>
+          <a href="./rates.html">Курсы</a>
+          <a href="./security.html">Безопасность</a>
+          <a href="./contacts.html">Контакты</a>
+          <button class="theme-toggle" type="button">Сменить тему</button>
+        </nav>
+        <button class="theme-toggle" type="button">Тёмная тема</button>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="page-title">
+        <div class="container">
+          <h1>Создать заявку на обмен</h1>
+          <p>Форма поддерживает криптообмен, выплату в рублях через СБП и получение наличных в городе. В истории хранятся до 10 последних заявок.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid-2 exchange-layout">
+
+            <div class="stack">
+              <div class="card exchange-card">
+                <h2>Калькулятор курса</h2>
+                <p>Выберите направление и сумму, чтобы увидеть итог и режим обработки заявки.</p>
+
+                <div class="form-group">
+                  <label for="calc-amount">Сумма и валюта</label>
+                  <div class="input-row">
+                    <input type="number" id="calc-amount" placeholder="0" min="0" step="0.0001">
+                    <select id="calc-from">
+                      <option value="BTC">BTC</option>
+                      <option value="ETH">ETH</option>
+                      <option value="USDT" selected>USDT</option>
+                      <option value="LTC">LTC</option>
+                      <option value="RUB">RUB</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="calc-to">Получаете</label>
+                  <select id="calc-to">
+                    <option value="RUB" selected>RUB - рубли</option>
+                    <option value="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                    <option value="USDT">USDT</option>
+                    <option value="LTC">LTC</option>
+                  </select>
+                </div>
+
+                <div class="form-group" id="calc-rub-mode-group">
+                  <label for="calc-rub-mode">Вариант получения рублей</label>
+                  <select id="calc-rub-mode">
+                    <option value="sbp">СБП</option>
+                    <option value="fiat">Фиат</option>
+                  </select>
+                </div>
+
+                <div class="calc-result" id="calc-result">
+                  <strong>0 ₽</strong>
+                  <small id="calc-comm-label">Комиссия будет показана после выбора направления</small>
+                </div>
+
+                <div class="exchange-meta">
+                  <div class="mock-field">
+                    <span>Курс</span>
+                    <strong id="calc-rate">1 USDT = 94.20 RUB</strong>
+                  </div>
+                  <div class="mock-field">
+                    <span>Режим обработки</span>
+                    <strong id="calc-direction-note">Выплата в рублях через СБП</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card exchange-card">
+                <div class="section-inline-head">
+                  <div>
+                    <h2>Последние заявки</h2>
+                    <p>Сначала показываются 2 последние заявки. Можно раскрыть весь список.</p>
+                  </div>
+                  <button class="btn btn-outline" id="orders-toggle-btn" type="button" hidden>Увидеть больше</button>
+                </div>
+
+                <div class="orders-empty" id="orders-empty">Пока заявок нет. Создайте первую заявку через форму справа.</div>
+                <div class="orders-list" id="orders-list"></div>
+              </div>
+            </div>
+
+            <div class="stack">
+              <div class="card exchange-card">
+                <h2>Форма заявки</h2>
+
+                <div class="exchange-alert" id="exchange-alert" hidden></div>
+
+                <form id="exchange-form">
+                  <div class="form-group">
+                    <label for="order-amount">Отдаёте</label>
+                    <div class="input-row">
+                      <input type="number" id="order-amount" name="amount" placeholder="Сумма" required min="0" step="0.0001">
+                      <select id="order-from" name="from">
+                        <option value="BTC">BTC</option>
+                        <option value="ETH">ETH</option>
+                        <option value="USDT" selected>USDT</option>
+                        <option value="LTC">LTC</option>
+                        <option value="RUB">RUB</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="order-to">Получаете</label>
+                    <select id="order-to" name="to">
+                      <option value="RUB" selected>RUB - рубли</option>
+                      <option value="BTC">BTC</option>
+                      <option value="ETH">ETH</option>
+                      <option value="USDT">USDT</option>
+                      <option value="LTC">LTC</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" id="order-pay-method-group" hidden>
+                    <label for="order-pay-method">Куда будете переводить рубли сервису</label>
+                    <select id="order-pay-method" name="payMethod">
+                      <option value="sbp">По номеру телефона (СБП)</option>
+                      <option value="card">На карту</option>
+                      <option value="account">На расчетный счет</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" id="order-rub-mode-group">
+                    <label for="order-rub-mode">Вариант получения рублей</label>
+                    <select id="order-rub-mode" name="rubMode">
+                      <option value="sbp">СБП</option>
+                      <option value="fiat">Фиат</option>
+                    </select>
+                  </div>
+
+                  <div id="sbp-fields">
+                    <div class="form-group">
+                      <label for="order-sbp-method">Способ выплаты</label>
+                      <select id="order-sbp-method" name="sbpMethod">
+                        <option value="sbp">СБП</option>
+                        <option value="card">Карты</option>
+                        <option value="phone">Номер телефона</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="order-bank">Банк РФ</label>
+                      <select id="order-bank" name="bank">
+                        <option value="Сбербанк">Сбербанк</option>
+                        <option value="Т-Банк">Т-Банк</option>
+                        <option value="ВТБ">ВТБ</option>
+                        <option value="Альфа-Банк">Альфа-Банк</option>
+                        <option value="Райффайзен Банк">Райффайзен Банк</option>
+                        <option value="Газпромбанк">Газпромбанк</option>
+                        <option value="Россельхозбанк">Россельхозбанк</option>
+                        <option value="ПСБ">ПСБ</option>
+                        <option value="Совкомбанк">Совкомбанк</option>
+                        <option value="Открытие">Открытие</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="order-requisites">Реквизиты получателя</label>
+                      <input type="text" id="order-requisites" name="requisites" placeholder="+7 или номер карты" required>
+                    </div>
+                  </div>
+
+                  <div id="fiat-fields" hidden>
+                    <div class="form-group">
+                      <label for="order-city">Город получения</label>
+                      <select id="order-city" name="city">
+                        <option value="">Выберите город</option>
+                        <option>Москва</option>
+                        <option>Санкт-Петербург</option>
+                        <option>Новосибирск</option>
+                        <option>Екатеринбург</option>
+                        <option>Казань</option>
+                        <option>Нижний Новгород</option>
+                        <option>Челябинск</option>
+                        <option>Самара</option>
+                        <option>Омск</option>
+                        <option>Ростов-на-Дону</option>
+                        <option>Уфа</option>
+                        <option>Красноярск</option>
+                        <option>Воронеж</option>
+                        <option>Пермь</option>
+                        <option>Волгоград</option>
+                        <option>Краснодар</option>
+                        <option>Саратов</option>
+                        <option>Тюмень</option>
+                        <option>Тольятти</option>
+                        <option>Ижевск</option>
+                        <option>Барнаул</option>
+                        <option>Ульяновск</option>
+                        <option>Иркутск</option>
+                        <option>Хабаровск</option>
+                        <option>Ярославль</option>
+                        <option>Владивосток</option>
+                        <option>Махачкала</option>
+                        <option>Томск</option>
+                        <option>Оренбург</option>
+                        <option>Кемерово</option>
+                        <option>Новокузнецк</option>
+                        <option>Рязань</option>
+                        <option>Астрахань</option>
+                        <option>Набережные Челны</option>
+                        <option>Пенза</option>
+                        <option>Липецк</option>
+                        <option>Киров</option>
+                        <option>Чебоксары</option>
+                        <option>Калининград</option>
+                        <option>Тула</option>
+                        <option>Курск</option>
+                        <option>Ставрополь</option>
+                        <option>Сочи</option>
+                        <option>Улан-Удэ</option>
+                        <option>Тверь</option>
+                        <option>Магнитогорск</option>
+                        <option>Брянск</option>
+                        <option>Иваново</option>
+                        <option>Белгород</option>
+                        <option>Сургут</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div id="token-fields" hidden>
+                    <div class="form-group">
+                      <label for="order-token-network">Сеть получения</label>
+                      <input type="text" id="order-token-network" name="tokenNetwork" placeholder="Например, TRC20 / ERC20">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="order-token-wallet">Кошелёк получения</label>
+                      <input type="text" id="order-token-wallet" name="tokenWallet" placeholder="Адрес кошелька">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="label-with-note" for="order-contact">
+                      <span>Контакт для связи</span>
+                      <span class="label-note">менеджер: @nonoir_manager</span>
+                    </label>
+                    <input type="text" id="order-contact" name="contact" placeholder="email@example.com или @telegram" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="order-comment">Комментарий к заявке</label>
+                    <input type="text" id="order-comment" name="comment" placeholder="Необязательно">
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-full">Создать заявку</button>
+                </form>
+              </div>
+
+              <div class="card exchange-card">
+                <h2>Предпросмотр заявки</h2>
+                <div class="preview-grid">
+                  <div class="mock-field">
+                    <span>Направление</span>
+                    <strong id="preview-direction">USDT → RUB</strong>
+                  </div>
+                  <div class="mock-field">
+                    <span>Маршрут выплаты</span>
+                    <strong id="preview-route">СБП / Сбербанк</strong>
+                  </div>
+                  <div class="mock-field">
+                    <span>К выплате</span>
+                    <strong id="preview-result">0 ₽</strong>
+                  </div>
+                  <div class="mock-field">
+                    <span>Комиссия сервиса</span>
+                    <strong id="preview-commission">0.8%</strong>
+                  </div>
+                  <div class="mock-field">
+                    <span>Статус</span>
+                    <strong id="preview-status">Ожидается перевод</strong>
+                  </div>
+                  <div class="mock-field">
+                    <span>Выданные реквизиты</span>
+                    <strong id="preview-issued-requisites">Реквизиты будут зависеть от того, что вы отдаёте сервису</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <div>
+          <strong>NONOIR Exchange</strong>
+          <p>Надёжный обмен криптовалют на рублёвые реквизиты.</p>
+        </div>
+        <div class="footer-links">
+          <a href="./index.html">Главная</a>
+          <a href="./rates.html">Курсы</a>
+          <a href="./security.html">Безопасность</a>
+          <a href="./contacts.html">Контакты</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/rates.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/exchange.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NONOIR Exchange | Курсы и комиссии</title>
+  <link rel="icon" href="../image/logo/logo_nonoir.png" type="image/png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+
+    <header class="site-header">
+      <div class="container header-row">
+        <a class="brand" href="./index.html">
+          <img class="brand-text" src="../image/logo/text_logo_nonoir_black.png" alt="NONOIR Exchange">
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+          <a href="./index.html">Главная</a>
+          <a href="./exchange.html">Обмен</a>
+          <a class="active" href="./rates.html">Курсы</a>
+          <a href="./security.html">Безопасность</a>
+          <a href="./contacts.html">Контакты</a>
+          <button class="theme-toggle" type="button">Сменить тему</button>
+        </nav>
+        <button class="theme-toggle" type="button">Тёмная тема</button>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="page-title">
+        <div class="container">
+          <h1>Курсы, лимиты и комиссии</h1>
+          <p>Здесь собраны рабочие направления обмена, диапазоны сумм, комиссия сервиса и режимы выплаты. Калькулятор оставлен в разделе обмена, а на этой странице сосредоточены сами условия.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-inline-head">
+            <div>
+              <h2>Текущие направления</h2>
+              <p>Витрина показывает базовые курсы к рублю и активные способы исполнения заявки.</p>
+            </div>
+            <div class="rates-update" id="rates-updated-at">Обновление...</div>
+          </div>
+
+          <div class="grid-4" id="rates-cards"></div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0;">
+        <div class="container">
+          <div class="section-inline-head">
+            <div>
+              <h2>Таблица условий</h2>
+              <p>По каждому направлению можно посмотреть курс, комиссию, лимиты и доступный режим выдачи.</p>
+            </div>
+            <a class="btn btn-outline" href="./exchange.html">Перейти к созданию заявки</a>
+          </div>
+
+          <div class="card table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Направление</th>
+                  <th>Курс</th>
+                  <th>Комиссия</th>
+                  <th>Мин. сумма</th>
+                  <th>Макс. сумма</th>
+                  <th>Выдача</th>
+                  <th>Статус</th>
+                </tr>
+              </thead>
+              <tbody id="rates-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <div class="grid-3">
+            <div class="card feature-card">
+              <h3>Фиксация курса</h3>
+              <p>После создания заявки курс закрепляется на короткое окно и не меняется, пока перевод укладывается в регламент.</p>
+            </div>
+            <div class="card feature-card">
+              <h3>Режимы выплаты</h3>
+              <p>Вывод в рублях можно провести через СБП или подготовить к выдаче наличными, а криптонаправления обрабатываются отдельно.</p>
+            </div>
+            <div class="card feature-card">
+              <h3>Что влияет на итог</h3>
+              <p>На финальную сумму влияют комиссия сервиса, выбранная пара, лимиты направления и внешняя комиссия блокчейн-сети.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid-3">
+            <div class="card rates-note-card">
+              <h3>СБП</h3>
+              <p>Быстрый сценарий для выплат в рублях. Подходит для небольших и средних заявок, где важна скорость перевода.</p>
+            </div>
+            <div class="card rates-note-card">
+              <h3>Фиат</h3>
+              <p>Используется для наличной выдачи в городе. Для таких заявок важны лимит, резерв и доступность точки выдачи.</p>
+            </div>
+            <div class="card rates-note-card">
+              <h3>Токен → токен</h3>
+              <p>Направления без рублёвой части обычно проходят быстрее и подходят для оперативного обмена между активами.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <div>
+          <strong>NONOIR Exchange</strong>
+          <p>Надёжный обмен криптовалют на рублёвые реквизиты.</p>
+        </div>
+        <div class="footer-links">
+          <a href="./index.html">Главная</a>
+          <a href="./exchange.html">Обмен</a>
+          <a href="./security.html">Безопасность</a>
+          <a href="./contacts.html">Контакты</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/rates.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/rates-page.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>
